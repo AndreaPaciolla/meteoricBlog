@@ -1,19 +1,51 @@
+Posts = new Mongo.Collection("posts");
+
+
+
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
+  // This code only runs on the client
+  Template.body.helpers({
+    blogPosts: function () {
+      return [
+        {"author": "Andrea Paciolla", "title": "title no.1", "content": "This is a really cool blog post made with love!"},
+        {"author": "Lorenzo Dell'Acquila", "title": "title no.2", "content": "This is a really cool blog post made with love!"}
+      ];
     }
   });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
+  Template.body.events({
+    "submit #new_blog_post_form": function (event) {
+      // This function is called when the new task form is submitted
+      console.log(event);
+      //var text = event.target.text.value;
+      var title   = $("#new_blog_post_title").val();
+      var content = $("#new_blog_post_content").val();
+
+      Posts.insert({
+        title: title,
+        createdAt: new Date(),
+        content: content,
+        owner: Meteor.userId(),           // _id of logged in user
+        author: Meteor.user().username  // username of logged in user
+      });
+      // Clear form
+      //event.target.text.value = "";
+
+      // Prevent default form submit
+      return false;
     }
   });
+
+  /*Template.task.events({
+    "click .toggle-checked": function () {
+      // Set the checked property to the opposite of its current value
+      Tasks.update(this._id, {$set: {checked: !this.checked}});
+    },
+    "click .delete": function () {
+      Tasks.remove(this._id);
+    }
+  });*/
+
 }
 
 if (Meteor.isServer) {
@@ -21,3 +53,5 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
+

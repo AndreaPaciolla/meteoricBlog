@@ -1,14 +1,84 @@
+<!-- simple-todos.html -->
 <head>
-  <title>meteoricBlog</title>
+  <title>Meteoric Blog by Pacio</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <div class="container">
 
-  {{> hello}}
+  	<div class="row">
+  		<div class="col-lg-3"></div>
+  		<div class="col-lg-6">
+  			<div class="card" style="min-height:100px">
+			    <div class="card-content">
+			        <div class="card-body">
+			            <h1>MeteoricBlog</h1>
+			        </div>
+			    </div>
+	        </div>
+  		</div>
+  		<div class="col-lg-3"></div>
+  	</div>
+
+    <div class="row">
+	    <div class="col-lg-3"></div>
+
+	    <div class="col-lg-6">
+	    	<div class="well bs-component">
+		        <div class="list-group">
+		        	{{#each blogPosts}}
+		        		{{>blogPost}}
+		        	{{/each}}
+				</div>
+			</div>
+	    </div>
+
+	    <div class="col-lg-3"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6">
+			<div class="well bs-component">
+				<form class="form-horizontal" id="new_blog_post_form">
+				    <fieldset>
+				        <legend>Write your magical blog post</legend>
+				        <div class="form-group">
+				            <div class="col-lg-10">
+				                <input class="form-control" placeholder="The title" id="blogPostTitle"/>
+				                <span class="help-block">Write down your magnificant title.</span>
+				            </div>
+				            <div class="col-lg-10">
+				                <textarea class="form-control" rows="3" id="textArea"></textarea>
+				                <span class="help-block">Write down your magnificant ideas.</span>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <div class="col-lg-10 col-lg-offset-2">
+				                <button class="btn btn-default">Cancel</button>
+				                <button type="submit" class="btn btn-primary">Submit</button>
+				            </div>
+				        </div>
+				    </fieldset>
+				</form>	
+			</div>
+		</div>
+		<div class="col-lg-3"></div>
+	</div>
+
+  </div>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="blogPost">
+  	<div class="list-group-item">
+	    <div class="row-action-primary">
+	        <i class="mdi-file-folder"></i>
+	    </div>
+	    <div class="row-content">
+	        <div class="least-content">{{author}}</div>
+	        <h4 class="list-group-item-heading">{{title}}</h4>
+	        <p class="list-group-item-text">{{content}}</p>
+	    </div>
+	</div>
+	<div class="list-group-separator"></div>
 </template>
