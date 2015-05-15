@@ -1,6 +1,6 @@
 <!-- simple-todos.html -->
 <head>
-  <title>Meteoric Blog by Pacio</title>
+  <title>Meteoric Blog</title>
 </head>
 
 <body>
@@ -40,27 +40,30 @@
 		<div class="col-lg-3"></div>
 		<div class="col-lg-6">
 			<div class="well bs-component">
-				<form class="form-horizontal" id="new_blog_post_form">
-				    <fieldset>
-				        <legend>Write your magical blog post</legend>
-				        <div class="form-group">
-				            <div class="col-lg-10">
-				                <input class="form-control" placeholder="The title" id="blogPostTitle"/>
-				                <span class="help-block">Write down your magnificant title.</span>
-				            </div>
-				            <div class="col-lg-10">
-				                <textarea class="form-control" rows="3" id="textArea"></textarea>
-				                <span class="help-block">Write down your magnificant ideas.</span>
-				            </div>
-				        </div>
-				        <div class="form-group">
-				            <div class="col-lg-10 col-lg-offset-2">
-				                <button class="btn btn-default">Cancel</button>
-				                <button type="submit" class="btn btn-primary">Submit</button>
-				            </div>
-				        </div>
-				    </fieldset>
-				</form>	
+				{{#if currentUser}}
+					<form class="form-horizontal" id="new_blog_post_form">
+					    <fieldset>
+					        <legend>Write your magical blog post</legend>
+					        <div class="form-group">
+					            <div class="col-lg-10">
+					                <input class="form-control" placeholder="The title" id="blogPostTitle"/>
+					                <!--<span class="help-block">Write down your magnificant title.</span>-->
+					            </div>
+					            <div class="col-lg-10">
+					                <textarea class="form-control" rows="3" id="textArea" placeholder="Your amazing content"></textarea>
+					                <!--<span class="help-block">Write down your magnificant ideas.</span>-->
+					            </div>
+					        </div>
+					        <div class="form-group">
+					            <div class="col-lg-10 col-lg-offset-2">
+					                <button class="btn btn-default">Cancel</button>
+					                <button type="submit" class="btn btn-primary">Submit</button>
+					            </div>
+					        </div>
+					    </fieldset>
+					</form>	
+				{{/if}}
+				{{> loginButtons}}
 			</div>
 		</div>
 		<div class="col-lg-3"></div>
@@ -82,3 +85,5 @@
 	</div>
 	<div class="list-group-separator"></div>
 </template>
+
+

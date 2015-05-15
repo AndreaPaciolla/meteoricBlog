@@ -9,3 +9,5 @@ autopublish
 insecure
 fezvrasta:bootstrap-material-design
 jquery
+accounts-ui
+accounts-password

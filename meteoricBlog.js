@@ -7,8 +7,8 @@ if (Meteor.isClient) {
   Template.body.helpers({
     blogPosts: function () {
       return [
-        {"author": "Andrea Paciolla", "title": "title no.1", "content": "This is a really cool blog post made with love!"},
-        {"author": "Lorenzo Dell'Acquila", "title": "title no.2", "content": "This is a really cool blog post made with love!"}
+        {"author": "John Bravo", "title": "title no.1", "content": "This is a really cool blog post made with love!"},
+        {"author": "Jane Austen", "title": "title no.2", "content": "This is a really cool blog post made with love!"}
       ];
     }
   });
@@ -29,11 +29,16 @@ if (Meteor.isClient) {
         author: Meteor.user().username  // username of logged in user
       });
       // Clear form
-      //event.target.text.value = "";
+      $("#new_blog_post_title").val("");
+      $("#new_blog_post_content").val("");
 
       // Prevent default form submit
       return false;
     }
+  });
+
+  Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
   });
 
   /*Template.task.events({
